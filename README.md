@@ -164,21 +164,33 @@ Open http://localhost:3000 in your browser to use the app.
 
 ## Environment Variables
 
-The `.env` files are pre-configured and ready to use. No changes needed for local development.
+Copy `.env.example` to create the required env files:
 
-**`apps/api/.env`** (already present in repo):
-```env
-DATABASE_URL=postgresql://woxa:woxa_pass@localhost:5432/woxa_db
-JWT_SECRET=super_secret_key_change_in_production_min_32_chars_woxa
-PORT=4000
-FRONTEND_URL=http://localhost:3000
+```bash
+# API
+cp .env.example apps/api/.env
+
+# Frontend
+cp .env.example apps/web/.env.local
 ```
 
-**`apps/web/.env.local`** (already present in repo):
-```env
-NEXT_PUBLIC_API_URL=http://localhost:4000
-API_URL=http://localhost:4000
-```
+**`apps/api/.env`** — required keys:
+
+| Key | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `JWT_SECRET` | Random secret string (min 32 chars) |
+| `PORT` | API port (default: 4000) |
+| `FRONTEND_URL` | Frontend origin for CORS |
+
+**`apps/web/.env.local`** — required keys:
+
+| Key | Description |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | API URL for browser requests |
+| `API_URL` | API URL for server-side requests (Docker internal) |
+
+See `.env.example` at the repo root for reference values.
 
 ---
 
