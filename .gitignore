@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# API build output
+apps/api/dist/
+
+# Frontend build output
+apps/web/.next/
+apps/web/out/
+
+# Environment files — never commit secrets
+apps/api/.env
+apps/web/.env.local
+apps/web/.env.production
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Testing artifacts
+coverage/
+playwright-report/
+test-results/

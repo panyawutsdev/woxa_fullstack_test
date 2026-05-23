@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --woxa-bg-primary: #0a0f1e;
+  --woxa-bg-secondary: #0d1428;
+  --woxa-bg-card: #111827;
+  --woxa-bg-surface: #1a2235;
+  --woxa-accent-blue: #4f9cf9;
+  --woxa-accent-blue-dim: #2563eb;
+  --woxa-text-primary: #f1f5f9;
+  --woxa-text-secondary: #94a3b8;
+  --woxa-text-muted: #64748b;
+  --woxa-border: rgba(255, 255, 255, 0.08);
+  --woxa-border-hover: rgba(255, 255, 255, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--woxa-bg-primary);
+  color: var(--woxa-text-primary);
+  font-family: var(--font-body), sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
