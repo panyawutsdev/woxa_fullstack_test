@@ -6,7 +6,13 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createBrokerSchema, type CreateBrokerInput } from '@/lib/schemas'
 import { api } from '@/lib/api'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+
+const BROKER_TYPES = [
+  { value: 'cfd', label: 'CFD' },
+  { value: 'bond', label: 'Bond' },
+  { value: 'stock', label: 'Stock' },
+  { value: 'crypto', label: 'Crypto' },
+] as const
 
 export function BrokerForm() {
   const router = useRouter()
@@ -60,17 +66,22 @@ export function BrokerForm() {
 
       <div className="space-y-1.5">
         <label className={labelClass}>Broker Type</label>
-        <Select onValueChange={(val) => setValue('broker_type', val as any, { shouldValidate: true })} value={brokerType}>
-          <SelectTrigger>
-            <SelectValue placeholder="Select broker type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="cfd">CFD</SelectItem>
-            <SelectItem value="bond">Bond</SelectItem>
-            <SelectItem value="stock">Stock</SelectItem>
-            <SelectItem value="crypto">Crypto</SelectItem>
-          </SelectContent>
-        </Select>
+        <div className="grid grid-cols-4 gap-3">
+          {BROKER_TYPES.map(({ value, label }) => (
+            <button
+              key={value}
+              type="button"
+              onClick={() => setValue('broker_type', value, { shouldValidate: true })}
+              className={`h-11 rounded-sm text-sm font-medium tracking-wider transition-all ${
+                brokerType === value
+                  ? 'bg-[#4f9cf9]/20 text-[#f1f5f9] border border-[#4f9cf9]/60'
+                  : 'bg-[#1a2235] text-[#94a3b8] border border-white/10 hover:border-white/20 hover:text-[#f1f5f9]'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
         {errors.broker_type && <p className="text-xs text-red-400">{errors.broker_type.message}</p>}
       </div>
 
