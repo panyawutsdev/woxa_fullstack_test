@@ -76,6 +76,18 @@ Open **3 separate terminals** and follow each step in order.
 
 In **Terminal 1**, run PostgreSQL in Docker:
 
+**PowerShell (Windows):**
+```powershell
+docker run -d `
+  --name woxa-db `
+  -e POSTGRES_USER=woxa `
+  -e POSTGRES_PASSWORD=woxa_pass `
+  -e POSTGRES_DB=woxa_db `
+  -p 5432:5432 `
+  postgres:15-alpine
+```
+
+**bash / Git Bash / macOS / Linux:**
 ```bash
 docker run -d \
   --name woxa-db \
